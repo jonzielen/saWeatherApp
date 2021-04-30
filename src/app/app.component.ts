@@ -21,7 +21,6 @@ export class AppComponent implements OnInit, AfterViewInit {
 
   @HostListener('window:resize', ['$event'])
   onScroll(event) {
-    console.log('window resize event');
     this.navResize();
   }
 
