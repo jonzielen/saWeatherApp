@@ -1,3 +1,15 @@
+## Assignment Readme:
+
+## my approach to designing, implementing and testing
+
+
+
+
+
+
+
+-----------------------------------------------
+
 # WeatherDisplayer
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.1.

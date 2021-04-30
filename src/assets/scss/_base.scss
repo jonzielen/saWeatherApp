@@ -1,0 +1,173 @@
+// default styles
+body {
+  font-family: $brandFont;
+  line-height: 1;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+p,
+ol li {
+  padding: 0;
+  margin: 0;
+  line-height: 1;
+}
+
+h1 {
+  font-size: 72px;
+  color: $brandOrange;
+  font-weight: bold;
+  display: block;
+  margin-top: 70px;
+
+  @media (max-width: $sm-max) {
+    font-size: 38px;
+    text-align: center;
+    margin-top: 60px;
+  }
+}
+
+h2 {
+  font-size: 38px;
+  font-weight: bold;
+  color: $brandOrange;
+  text-align: center;
+  margin-bottom: 50px;
+
+  @media (max-width: $sm-max) {
+    font-size: 32px;
+  }
+}
+
+h3 {
+  font-size: 24px;
+  text-transform: uppercase;
+  line-height: 1.2;
+  color: $brandOrange;
+  text-align: center;
+  display: block;
+}
+
+h4 {
+  font-size: 32px;
+  color: $brandOrange;
+}
+
+.subheader {
+  font-size: 20px;
+  display: block;
+  margin-left: 4px;
+  color: $secondaryFontColor;
+  padding-top: 2px;
+
+  @media (max-width: $sm-max) {
+    font-size: 18px;
+    text-align: center;
+    padding-top: 4px;
+  }
+}
+
+p, ol li {
+  font-size: 16px;
+  line-height: 1.4;
+  color: $brandFontColor;
+}
+
+a {
+  text-decoration: none;
+  border-bottom: 0px solid transparent;
+}
+
+hr {
+  width: 232px;
+  margin: 20px auto 40px auto;
+  border: 1px solid #e5e5e5;
+}
+
+.gray-bg {
+  padding: 24px;
+  background-color: #fafafa;
+}
+
+// header styles
+
+.sticky-nav-offset {
+  margin-bottom: 170px;
+
+  @media (max-width: $sm-max) {
+    margin-bottom: 60px;
+  }
+}
+
+.sticky-nav {
+  position: fixed;
+  z-index: 100;
+}
+
+.nav-bar-col {
+  background-color: #fff;
+  padding-bottom: 20px;
+
+  @media (max-width: $sm-max) {
+    padding: 0;
+  }
+}
+
+.nav-bar {
+  margin-top: 40px;
+  height: 26px;
+  width: 100%;
+  background-color: $brandOrange;
+
+  @media (max-width: $sm-max) {
+    margin-top: 0;
+    height: 60px;
+  }
+}
+
+.sa-logo-desktop {
+  margin-top: 20px;
+  width: 130px;
+  height: 85px;
+}
+
+.sa-logo-mobile {
+  height: 40px;
+  width: 52px;
+  color: #fff;
+  margin-top: 8px;
+  margin-left: 20px;
+}
+
+// sections styles
+
+.current-weather {
+  margin-bottom: 30px;
+}
+
+.temp-details {
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+
+  li {
+    margin-bottom: 4px;
+  }
+}
+
+.forecast-details {
+  width: 100%;
+  max-width: 280px;
+  margin-bottom: 80px;
+}
+
+.weather-card {
+  @media (max-width: $sm-max) {
+    &:last-of-type {
+      margin-bottom: 50px;
+    }
+  }
+}
