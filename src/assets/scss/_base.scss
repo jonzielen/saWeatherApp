@@ -78,7 +78,7 @@ p, ol li {
 
 a {
   text-decoration: none;
-  border-bottom: 0px solid transparent;
+  border-bottom: 0 solid transparent;
 }
 
 hr {
@@ -104,7 +104,8 @@ hr {
 
 .sticky-nav {
   position: fixed;
-  z-index: 100;
+  top: 0;
+  z-index: 10;
 }
 
 .nav-bar-col {

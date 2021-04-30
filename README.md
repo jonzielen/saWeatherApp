@@ -1,14 +1,26 @@
-## Assignment Readme:
+# Assignment Readme:
 
-## my approach to designing, implementing and testing
+## My approach to designing, implementing and testing
+
+### Design
+
+My approach to designing the app was to keep it simple. I went through every page on the https://www.successacademies.org/ site, and looked for style patterns I could reuse. For example, I took the orange color (made a SCSS variable of it), the Akkurat font, and reviewed the most common break points.
+
+### Implementation
+
+Once again I tried to keep it simple.
+
+I added bootstrap to take care of the responsiveness of the page, so I could focus on picking the right styles and layout for the content.
+
+Also, I kept the api call in the main app as I felt taking it outside of it would have been too much for this project.
+
+### Testing
+
+I did responsive browser testing on the two browsers installed on my computer (Chrome and Safari). I also tested multiple phones in the Chrome dev tools simulator.
 
 
+********************
 
-
-
-
-
------------------------------------------------
 
 # WeatherDisplayer
 

@@ -7,6 +7,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit, AfterViewInit {
+  title = 'Success Academy<br>Weather App';
   private apiSettings: { [key: string]: string; } = {
     apiUrl: 'https://api.openweathermap.org/data/2.5/onecall?',
     lat: '40.7143',
