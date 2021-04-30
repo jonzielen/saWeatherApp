@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -6,7 +6,7 @@ import { HttpClient } from '@angular/common/http';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnInit, AfterViewInit {
   private apiSettings: { [key: string]: string; } = {
     apiUrl: 'https://api.openweathermap.org/data/2.5/onecall?',
     lat: '40.7143',
@@ -15,6 +15,7 @@ export class AppComponent implements OnInit {
   };
   currentWeather: { [key: string]: string; };
   forecasts: Array<{ [key: string]: string }[]>;
+  @ViewChild('attachSticky', {static: false}) attachSticky: ElementRef;
 
   constructor(private http: HttpClient) { }
 
@@ -30,5 +31,12 @@ export class AppComponent implements OnInit {
       this.currentWeather = weatherData['current'];
       this.forecasts = weatherData['daily'].slice(1, 6);
     });
+  }
+
+  ngAfterViewInit() {
+    const navElem = this.attachSticky.nativeElement;
+    const elemWidth = navElem.offsetWidth;
+    navElem.setAttribute('style', 'width: '+elemWidth+'px');
+    navElem.classList.add('sticky-nav');
   }
 }
