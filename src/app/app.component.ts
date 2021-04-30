@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
+import { Component, OnInit, HostListener, ViewChild, AfterViewInit, ElementRef } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -13,9 +13,16 @@ export class AppComponent implements OnInit, AfterViewInit {
     lon: '-74.006',
     weatherApiKey: '3cbe8bdccbb1230783f543771d3d3386'
   };
-  currentWeather: { [key: string]: string; };
-  forecasts: Array<{ [key: string]: string }[]>;
+  currentWeather: { [key: string]: string | number; };
+  forecasts: Array<{ [key: string]: string | number }>;
   @ViewChild('attachSticky', {static: false}) attachSticky: ElementRef;
+  @ViewChild('stickyNavOffset', {static: false}) stickyNavOffset: ElementRef;
+
+  @HostListener('window:resize', ['$event'])
+  onScroll(event) {
+    console.log('window resize event');
+    this.navResize();
+  }
 
   constructor(private http: HttpClient) { }
 
@@ -34,9 +41,14 @@ export class AppComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
+    this.navResize();
+  }
+
+  navResize() {
+    const navClass = 'sticky-nav';
+    const snOffset = this.stickyNavOffset.nativeElement.offsetWidth;
     const navElem = this.attachSticky.nativeElement;
-    const elemWidth = navElem.offsetWidth;
-    navElem.setAttribute('style', 'width: '+elemWidth+'px');
-    navElem.classList.add('sticky-nav');
+    navElem.setAttribute('style', 'width: '+snOffset+'px');
+    if (!navElem.classList.contains(navClass)) navElem.classList.add(navClass);
   }
 }
