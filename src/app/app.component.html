@@ -25,23 +25,23 @@
     <div class="col-12">
       <section class="current-weather">
         <h2 class="text-center">Current NYC Weather</h2>
-        <h3>{{ currentWeather?.dt * 1000 | date:'E, LLLL d' }}</h3>
+        <h3>{{ currentWeather?.dt * 1000 | date: 'E, LLLL d' }}</h3>
         <hr>
         <div class="mx-auto description">
           <div class="row justify-content-md-center">
             <div class="col-8 col-md-4 gray-bg pr-0">
               <ul class="temp-details">
-                <li>Current Temperature: <strong>{{ currentWeather?.temp }}&deg;F</strong></li>
-                <li>Feels Like: <strong>{{ currentWeather?.feels_like }}&deg;F</strong></li>
+                <li>Current Temperature: <strong>{{ currentWeather?.temp | number: '1.0-0' }}&deg;F</strong></li>
+                <li>Feels Like: <strong>{{ currentWeather?.feels_like | number: '1.0-0' }}&deg;F</strong></li>
                 <li>Pressure: <strong>{{ currentWeather?.pressure }}hPa</strong></li>
                 <li>Humidity: <strong>{{ currentWeather?.humidity }}%</strong></li>
-                <li>Dew Point: <strong> {{ currentWeather?.dew_point }}&deg;F</strong></li>
+                <li>Dew Point: <strong> {{ currentWeather?.dew_point | number: '1.0-0' }}&deg;F</strong></li>
                 <li>UVI: <strong>{{ currentWeather?.uvi }}</strong></li>
                 <li>Clouds: <strong>{{ currentWeather?.clouds }}%</strong></li>
                 <li>Visibility: <strong>{{ currentWeather?.visibility }} metres</strong></li>
                 <li>Wind Speed: <strong>{{ currentWeather?.wind_speed }} miles/hour</strong></li>
                 <li>Wind direction (degrees): <strong>{{ currentWeather?.wind_deg }}</strong> </li>
-                <li *ngIf="currentWeather?.wind_gust">Wind Gust: <strong>{{ currentWeather.wind_gust }} miles/hour</strong></li>
+                <li *ngIf="currentWeather?.wind_gust">Wind Gust: <strong>{{ currentWeather.wind_gust | number: '1.0-0' }} miles/hour</strong></li>
                 <li *ngIf="currentWeather?.rain">Rain volume for last hour: <strong>{{ currentWeather.rain['1h'] }}in</strong></li>
                 <li *ngIf="currentWeather?.snow">Snow volume for last hour: <strong>{{ currentWeather.snow['1h'] }}in</strong></li>
               </ul>
@@ -53,17 +53,17 @@
         </div>
       </section>
       <section class="forecast">
-        <h2 class="text-center">Forecast</h2>
+        <h2 class="text-center">5&nbsp;Day Forecast</h2>
         <div class="d-flex flex-column flex-md-row justify-content-md-between flex-wrap">
           <div class="weather-card col-12" *ngFor="let forecast of forecasts; last as isLast" [ngClass]="{'col-md-6': !isLast}">
-            <h3>{{ forecast?.dt * 1000 | date:'E, LLLL d' }}</h3>
+            <h3>{{ forecast?.dt * 1000 | date: 'E, LLLL d' }}</h3>
             <hr>
             <div class="row d-flex justify-content-center">
               <div class="forecast-details d-flex align-items-center">
                 <div class="col-6 col-md-8 pr-0">
                   <ul class="temp-details">
-                    <li>Low: <strong>{{ forecast.temp['min'] }}&deg;F</strong></li>
-                    <li>High: <strong>{{ forecast.temp['max'] }}&deg;F</strong></li>
+                    <li>Low: <strong>{{ forecast.temp['min'] | number: '1.0-0' }}&deg;F</strong></li>
+                    <li>High: <strong>{{ forecast.temp['max'] | number: '1.0-0' }}&deg;F</strong></li>
                     <li>Condition: <strong>{{ forecast?.weather[0].description | titlecase }}</strong></li>
                   </ul>
                 </div>
