@@ -8,10 +8,11 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent implements OnInit, AfterViewInit {
   title = 'Success Academy<br>Weather App';
+  locationName: string = "New York City";
+  lat: string = '40.7143';
+  lon: string = '-74.006';
   private apiSettings: { [key: string]: string; } = {
     apiUrl: 'https://api.openweathermap.org/data/2.5/onecall?',
-    lat: '40.7143',
-    lon: '-74.006',
     weatherApiKey: '3cbe8bdccbb1230783f543771d3d3386'
   };
   currentWeather: { [key: string]: string | number; };
@@ -27,16 +28,20 @@ export class AppComponent implements OnInit, AfterViewInit {
   constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
-    this.fetchData();
+    this.fetchData(this.lat, this.lon);
   }
 
-  private fetchData() {
-    const apiUrl = this.apiSettings.apiUrl + 'lat=' + this.apiSettings.lat + '&lon=' + this.apiSettings.lon + '&units=imperial' + '&appid=' + this.apiSettings.weatherApiKey;
+  private fetchData(lat, lon) {
+    const apiUrl = this.apiSettings.apiUrl + 'lat=' + lat + '&lon=' + lon + '&units=imperial' + '&appid=' + this.apiSettings.weatherApiKey;
 
     this.http.get(apiUrl)
     .subscribe(weatherData => {
       this.currentWeather = weatherData['current'];
       this.forecasts = weatherData['daily'].slice(1, 6);
+    },
+    error => {
+      console.log('2 ERROR: ', error);
+
     });
   }
 
@@ -50,5 +55,10 @@ export class AppComponent implements OnInit, AfterViewInit {
     const navElem = this.attachSticky.nativeElement;
     navElem.setAttribute('style', 'width: '+snOffset+'px');
     if (!navElem.classList.contains(navClass)) navElem.classList.add(navClass);
+  }
+
+  getNewWeather(e) {
+    this.locationName = e.name;
+    this.fetchData(e.position.lat, e.position.lon);
   }
 }

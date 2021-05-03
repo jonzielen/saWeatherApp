@@ -18,13 +18,18 @@
   <div class="row">
     <div class="col-12 mb-5">
       <h1 [innerHTML]="title"></h1>
-      <p class="subheader">New York City Weather</p>
+      <p class="subheader">{{ locationName }} Weather</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-12">
+      <zip-selector (selectedWeather)="getNewWeather($event)"></zip-selector>
     </div>
   </div>
   <div class="row">
     <div class="col-12">
       <section class="current-weather">
-        <h2 class="text-center">Current NYC Weather</h2>
+        <h2 class="text-center">Current Weather</h2>
         <h3 [innerHTML]="currentWeather?.dt * 1000 | date: 'E, LLLL d'"></h3>
         <hr>
         <div class="mx-auto description">

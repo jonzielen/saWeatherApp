@@ -1,0 +1,15 @@
+<div class="row">
+  <div class="col-12 col-6 mb-4">
+    <h3 class="text-left mb-2">Select a Location:</h3>
+    <select class="select" #selectDropdown (change)="selectZip(selectDropdown.value)">
+      <option value="{{i}}" *ngFor="let location of selectLocations; index as i" [innerHTML]="location.name"></option>
+    </select>
+  </div>
+  <div class="col-12 col-6 mb-4">
+    <h3 class="text-left mb-2">Search by Zipcode:</h3>
+    <!-- limit input to just numbers and 5 numbers -->
+    <input type="text" name="zipcode" (keyup)="inputValidation()" #zipcodeSearch>
+    <button class="btn btn-primary" (click)="getZipcode()" #searchBtn disabled>GO!</button>
+    <h6 class="text-left text-danger" [ngClass]="incorrectZipcode ? 'd-block' : 'd-none'">Please enter a valid zipcode.</h6>
+  </div>
+</div>
